@@ -7,6 +7,9 @@ def print_person():
         print(f"Lastname: {person['lastname']}")
         print(f"Age: {person['age']}")
 
+def is_age(age):
+    return age.isdigit() and int(age) > 0
+
 def main():
     while True:
         person = {}
@@ -17,7 +20,7 @@ def main():
         while True:
             print("Age?")
             age_input = input().strip()
-            if age_input.isdigit() and 0 < int(age_input):
+            if is_age(age_input):
                 person["age"] = age_input
                 break
         persons.append(person)
@@ -26,3 +29,5 @@ def main():
 
 if __name__ == "__main__":
     main()
+    assert(is_age("19") == True)
+    assert(is_age("0") == False)
